@@ -83,6 +83,7 @@ class Game:
 
 if __name__ == "__main__":
     # Запуск игры
-    game = Game("Игрок")
+    input_name = input("Введите имя игрока: ")
+    game = Game(input_name)
     game.start()
 
