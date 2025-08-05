@@ -1,3 +1,13 @@
+'''
+Тестировать создание героев Тестировать атаку Тестировать проверку на жизнь
+
+
+ Тестирование:
+1 - Создания героев.
+2 - Метода attack().
+3 - Метода is_alive().
+'''
+
 class Hero:
     def __init__(self, name):
         self.name = name  # Имя героя
@@ -40,10 +50,32 @@ class Game:
 
             round_number += 1
 
-
+    # --- ТЕСТЫ ---
 if __name__ == "__main__":
-    # Запуск игры
-    print("\n=== ИГРА НАЧАЛАСЬ ===")
-    game = Game("Игрок")
-    game.start()
+        print("=== ТЕСТИРОВАНИЕ ===")
 
+    # 1. Тест создания героев
+player = Hero("Игрок")
+computer = Hero("Компьютер")
+print(f"Создан герой: {player.name}, здоровье: {player.health}, сила удара: {player.attack_power}")
+print(f"Создан герой: {computer.name}, здоровье: {computer.health}, сила удара: {computer.attack_power}\n")
+
+    # 2. Тест атаки
+print("=== ТЕСТ АТАКИ ===")
+print(f"До атаки: у {computer.name} осталось {computer.health} здоровья")
+player.attack(computer)
+print(f"После атаки: у {computer.name} осталось {computer.health} здоровья\n")
+
+    # 3. Тест проверки жизни
+print("=== ТЕСТ ПРОВЕРКИ ЖИЗНИ ===")
+print(f"{player.name} жив? {player.is_alive()}")
+print(f"{computer.name} жив? {computer.is_alive()}")
+
+    # Уменьшим здоровье компьютера до нуля
+computer.health = 0
+print(f"{computer.name} жив? {computer.is_alive()}")
+
+    # Запуск игры
+print("\n=== ИГРА НАЧАЛАСЬ ===")
+game = Game("Игрок")
+game.start()
